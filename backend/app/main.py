@@ -16,7 +16,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 
-from app.routers import members, claims, reconcile
+from app.routers import members, claims, reconcile, chat
 from app.services.denial_lookup import DenialLookup
 from app.services.sbc_retriever import SBCRetriever
 from app.services.reconciliation import ReconciliationAgent
@@ -57,6 +57,7 @@ app.add_middleware(
 app.include_router(members.router)
 app.include_router(claims.router)
 app.include_router(reconcile.router)
+app.include_router(chat.router)
 
 
 # ── Health check ──────────────────────────────────────────────

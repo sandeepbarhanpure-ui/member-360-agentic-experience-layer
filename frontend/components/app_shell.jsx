@@ -392,13 +392,43 @@ function DenialCodesPage() {
 
 /* ═══ App Shell (Main Layout) ═══════════════════════════════ */
 function AppShell() {
-  const [page, setPage] = useState('dashboard');
+  const [page, setPage] = useState('chat');
 
   const pages = [
+    { id: 'chat', icon: '💬', label: 'Chat Agent' },
     { id: 'dashboard', icon: '📊', label: 'Dashboard' },
     { id: 'reconcile', icon: '⚡', label: 'Reconcile' },
     { id: 'codes', icon: '📖', label: 'Denial Codes' },
   ];
+
+  // Chat page takes over the full viewport (has its own layout)
+  if (page === 'chat') {
+    return (
+      <div className="h-screen flex flex-col">
+        {/* Thin top bar for navigation back */}
+        <div className="bg-gray-900/95 border-b border-gray-800 px-4 py-1.5 flex items-center gap-3 flex-shrink-0">
+          <div className="flex gap-1">
+            {pages.map(p => (
+              <button
+                key={p.id}
+                onClick={() => setPage(p.id)}
+                className={`px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
+                  page === p.id
+                    ? 'bg-[#0053e2] text-white'
+                    : 'text-gray-500 hover:text-gray-300 hover:bg-gray-800'
+                }`}
+              >
+                {p.icon} {p.label}
+              </button>
+            ))}
+          </div>
+        </div>
+        <div className="flex-1 min-h-0">
+          <ChatPage />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="flex h-screen">
