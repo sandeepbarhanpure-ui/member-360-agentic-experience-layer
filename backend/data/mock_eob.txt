@@ -1,0 +1,18 @@
+EXPLANATION OF BENEFITS
+=======================
+Plan: 2026 Associate Health Plan
+Member ID: WMT-882401-A
+Date of Service: 2026-03-10
+
+CLAIM STATUS: DENIED
+
+Code: CO-197
+Service: MRI Knee
+Facility: Outpatient Clinic
+Rendering Provider: Dr. James Whitfield, NPI 1234567890
+Billed Amount: $1,250.00
+Allowed Amount: $0.00
+Plan Paid: $0.00
+Member Responsibility: $1,250.00
+
+Remark: Service requires prior authorization per plan guidelines.

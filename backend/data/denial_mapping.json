@@ -1,0 +1,44 @@
+{
+  "CO-197": {
+    "reason": "Prior Authorization Absent",
+    "plain_language": "The provider didn't get the required 'OK' from the plan before the service.",
+    "sbc_section": "Advanced Imaging",
+    "action_owner": "Provider",
+    "script": "I'm calling about claim [ID]. My plan denied this because a prior authorization was not filed. As an in-network provider, please submit a retroactive authorization to resolve this."
+  },
+  "CO-16": {
+    "reason": "Missing Medical Records",
+    "plain_language": "The insurance company needs more details from your doctor to see why this was necessary.",
+    "sbc_section": "Claims Procedures",
+    "action_owner": "Provider",
+    "script": "My claim was denied for missing information. Please resubmit the claim with the clinical notes and office visit records for [Date]."
+  },
+  "CO-4": {
+    "reason": "Procedure Modifier Inconsistency",
+    "plain_language": "The billing code used by the provider doesn't match the service that was performed.",
+    "sbc_section": "Claims Procedures",
+    "action_owner": "Provider",
+    "script": "I'm calling about claim [ID]. The denial code indicates a modifier issue. Please review the procedure and modifier codes, correct any errors, and resubmit."
+  },
+  "CO-29": {
+    "reason": "Filing Deadline Exceeded",
+    "plain_language": "The claim was submitted too late. Providers must file within the plan's deadline.",
+    "sbc_section": "Claims Procedures",
+    "action_owner": "Provider",
+    "script": "My claim was denied for late filing. Please check your records for the original submission date and file an appeal with proof of timely filing if applicable."
+  },
+  "PR-1": {
+    "reason": "Member Deductible Applies",
+    "plain_language": "This amount is your responsibility because you haven't met your annual deductible yet.",
+    "sbc_section": "Cost Sharing",
+    "action_owner": "Member",
+    "script": "No provider action needed. This amount applies to your annual deductible. Check your plan's Explanation of Benefits for your remaining deductible balance."
+  },
+  "PR-2": {
+    "reason": "Coinsurance Applies",
+    "plain_language": "After the plan paid its share, this is the percentage you owe based on your coinsurance rate.",
+    "sbc_section": "Cost Sharing",
+    "action_owner": "Member",
+    "script": "No provider action needed. This is your coinsurance portion. Refer to your SBC under Cost Sharing for your coinsurance percentage for this service category."
+  }
+}
