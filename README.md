@@ -6,7 +6,7 @@
 
 ---
 
-## 📋 Table of Contents
+## Table of Contents
 
 - [The Problem](#the-problem)
 - [The Solution](#the-solution)
