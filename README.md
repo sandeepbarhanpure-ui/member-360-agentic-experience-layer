@@ -143,11 +143,11 @@ open http://localhost:3000
 ```
 
 **What you'll see:**
-- 💬 **Chat Agent** - Conversational UI with 7 flows (greeting, denial explanation, action plan, script generator, financial summary, appeal guidance, escalation)
-- 📊 **Dashboard** - Members table, claims table, metrics
-- ⚡ **Reconcile Tool** - Paste EOB → full analysis
-- 📖 **Denial Codes** - Reference guide
-- 📄 **API Docs** - Auto-generated Swagger UI at `/docs`
+-  **Chat Agent** - Conversational UI with 7 flows (greeting, denial explanation, action plan, script generator, financial summary, appeal guidance, escalation)
+-  **Dashboard** - Members table, claims table, metrics
+-  **Reconcile Tool** - Paste EOB → full analysis
+-  **Denial Codes** - Reference guide
+-  **API Docs** - Auto-generated Swagger UI at `/docs`
 
 ### Original Prototype (v1 - Streamlit)
 
@@ -277,14 +277,14 @@ The system renders:
 - **Backend:** FastAPI with clean separation (routers/services/models)
 - **Frontend:** React SPA with 4 pages (Chat, Dashboard, Reconcile, Codes)
 - **Features:** 9 API endpoints, 7 chat flows, tool-chain visualization
-- **Status:** ✅ MVP-ready, synthetic data, integration-ready
+- **Status:** MVP-ready, synthetic data, integration-ready
 - **Docs:** SESSION_SUMMARY.md, WORKING_BACKWARDS.md
 
 ### v1 (Archived - Original Prototype)
 - **Backend:** Single 850-line `app.py` (Streamlit)
 - **Frontend:** 3 React JSX prototypes (chat, dashboard, architecture)
 - **Features:** Basic reconciliation, RAG retrieval
-- **Status:** 📦 Archived in `prototype-v1/`
+- **Status:** Archived in `prototype-v1/`
 - **Docs:** prototype-v1/README-original.md
 
 ---
