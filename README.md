@@ -1,3 +1,6 @@
+
+[IMAGE: License: Proprietary] (https://img.shields.io/badge/License-Proprietary-red.svg)
+
 # ⚕ Member 360 — Agentic Experience Layer
 
 > An interpretation layer that sits between a claims adjudication engine and the member it affects. It reads denial outcomes, identifies who is responsible, cites the plan rule that applies, and gives the member a clear path forward.
