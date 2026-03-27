@@ -11,3 +11,12 @@ node_modules/
 *.sqlite
 *.csv
 *.xlsx
+
+# Root-level legacy files (v1 artifacts, moved to prototype-v1/)
+/app.py
+/requirements.txt
+/data/
+
+# Internal session artifacts
+RESUME.md
+.backups/
