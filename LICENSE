@@ -1,21 +1,32 @@
-MIT License
+Copyright (c) 2026 Sandeep Barhanpure. All Rights Reserved.
 
-Copyright (c) 2026
+PROPRIETARY SOFTWARE LICENSE
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+This software and all associated source code, documentation, assets, and
+architectural concepts (collectively, "the Software") are the exclusive
+intellectual property of Sandeep Barhanpure.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+NO PERMISSION IS GRANTED to any person or entity to use, copy, modify,
+merge, publish, distribute, sublicense, sell, or otherwise exploit the
+Software or any portion thereof without the express prior written consent
+of the copyright holder.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+VIEWING PERMISSION: The Software is made publicly visible on GitHub solely
+for the purpose of demonstrating technical capability to prospective
+employers, clients, and collaborators. Viewing the source code does not
+constitute a grant of any rights to use, reproduce, or build upon it.
+
+PROHIBITED USES include but are not limited to:
+- Incorporating any portion of this code into a commercial product
+- Deploying this software for internal business operations without a
+  written license agreement
+- Reusing architectural patterns, data models, or pipeline designs in
+  competing products
+- Training machine learning models on this codebase
+
+DISCLAIMER: THE SOFTWARE IS PROVIDED FOR VIEWING PURPOSES ONLY, WITHOUT
+WARRANTY OF ANY KIND. THE COPYRIGHT HOLDER SHALL NOT BE LIABLE FOR ANY
+CLAIM, DAMAGES, OR LIABILITY ARISING FROM UNAUTHORIZED USE.
+
+For licensing inquiries, contact the copyright holder via GitHub:
+https://github.com/sandeepbarhanpure-ui
