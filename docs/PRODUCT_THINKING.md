@@ -1,100 +1,136 @@
 # Patient Journey & Product Thinking
 
+---
+
 ## 1. The Full Journey — 5 Phases of Benefits Navigation
 
-The patient journey spans five phases: **Enrollment → Finding Care → Receiving Care → Claims & Billing → Ongoing Management**. Most healthtech investment has focused on Phases 1–3 (enrollment platforms, provider directories, telemedicine). Phase 4 — the post-care financial experience — remains the most painful and least addressed.
+The patient journey across employer-sponsored health benefits spans five distinct phases, each with its own activities, touchpoints, and friction points:
 
-| Phase | Primary Friction |
-|---|---|
-| 1. Enroll in Benefits | Plans are confusing — members can't meaningfully compare options |
-| 2. Find & Access Care | Outdated directories, unclear referral and prior auth requirements |
-| 3. Get Medical Care | Minimal friction — this is the phase the system is optimized for |
-| **4. Understand & Pay Bills** | **Highest friction — cryptic denial codes, confusing EOBs, no guidance** |
-| 5. Ongoing Management | Disconnected systems, no feedback loop to enrollment decisions |
+| Phase | What Happens | Key Touchpoints | Primary Friction |
+|---|---|---|---|
+| **1. Enroll in Benefits** | Reviewing plan options (Medical, Dental, Vision, HSA/FSA), using comparison tools | Company Benefits Portal, HR Communications | Plans are confusing — members can't meaningfully compare deductibles, coinsurance, and network scope |
+| **2. Find & Access Care** | Searching in-network providers, checking specialist coverage, scheduling | Carrier Mobile App, Provider Directory, Telemedicine Platform | Outdated provider directories, unclear referral requirements, prior auth uncertainty |
+| **3. Get Medical Care** | Checking in, sharing insurance information, consultations and tests | Digital ID Card, Patient Portal, Doctor's Office Check-in | Minimal friction here — this is the phase the system is optimized for |
+| **4. Understand & Pay Bills** | Receiving EOBs, tracking deductible, reviewing provider bills, using HSA/FSA | Health Carrier Portal, EOB Statement, Provider Billing Portal, HSA/FSA Manager | **Highest friction phase** — cryptic denial codes, confusing documentation, reconciliation between EOB and provider bills |
+| **5. Ongoing Management** | Managing HSA/FSA contributions, wellness programs, preparing for next open enrollment | Benefits Portal, HSA/FSA Portal, Wellness App, Retirement Account Portal | Disconnected systems, no feedback loop from claims experience to enrollment decisions |
+
+**Key insight:** Phases 1–3 and 5 have been the focus of most healthtech investment (enrollment platforms, provider directories, telemedicine, wellness apps). Phase 4 — the post-care financial experience — remains largely unaddressed despite being the phase where members face the most confusion, the highest financial exposure, and the least guidance.
 
 ---
 
 ## 2. Phase 4 Deep Dive — The Friction Zone
 
-### Why EOBs Fail the Member
+### Anatomy of the Problem
 
-When a claim is processed, the member receives an Explanation of Benefits. This is the primary communication between the adjudication system and the person it affects — and it is nearly incomprehensible.
+When a claim is processed, the member receives an Explanation of Benefits (EOB). This document is the primary communication channel between the adjudication system and the human being it affects. And it's nearly incomprehensible.
 
-**The four patient challenges:**
+**What the EOB contains:**
+- Service type, date, and provider
+- Amount billed vs. allowed amount vs. provider discount
+- Member share (deductible, copay, coinsurance)
+- Denial codes (CARC/RARC) if applicable
+- Remark codes and plan references
 
-| Challenge | What Happens |
-|---|---|
-| Confusing Documentation | Multiple EOBs per visit, jargon terminology, no plain-language explanation |
-| Out-of-Network Surprise | Specialist wasn't in-network — facility was, but anesthesiologist wasn't |
-| Claim Denied (Pre-Auth) | Prior authorization missing — provider didn't file, or plan didn't respond |
-| Reconciliation Mismatch | EOB says one amount, provider bill says another, member can't reconcile |
+**Why it fails the member:**
+- Multiple EOBs for a single visit (facility fee, professional fee, lab, imaging — each billed separately)
+- Jargon-heavy terminology that assumes familiarity with insurance mechanics
+- No plain-language explanation of what happened or what to do next
+- No indication of whether the member should act, the provider should act, or nobody needs to act
 
-### The Manual Resolution Path (Without Member 360)
+### The Four Patient Challenges
 
-Today's resolution is entirely member-initiated:
+| Challenge | Description | Frequency |
+|---|---|---|
+| **Confusing Documentation** | Multiple EOBs per visit, confusing format, jargon terminology | Every claim |
+| **Out-of-Network Surprise** | Specialist wasn't in-network, facility was but anesthesiologist wasn't | Common for complex care |
+| **Claim Denied (Pre-Auth)** | Prior authorization missing — provider didn't file or plan didn't respond | 9% of all denials (KFF/CMS) |
+| **Reconciliation Mismatch** | EOB says one amount, provider bill says another, member has no way to reconcile | Extremely common |
 
-1. **Review EOB & Bill** — compare documents at home
-2. **Research & Clarification** — call carrier and provider (60% abandon at 1+ min hold)
-3. **Appeals & Reconciliation** — file appeal or request corrections (<1% of members reach this step)
-4. **Final Payment** — pay via HSA/FSA portal or provider billing site
+### How Members Currently Navigate This (Without Member 360)
 
-The system places the entire burden on the person with the least context, the least leverage, and the least time.
+The resolution path today is entirely manual and member-initiated:
+
+1. **Review EOB & Bill** — Member compares documents at home. Touchpoint: mail/email.
+2. **Research & Clarification** — Member calls carrier member services and/or provider billing department. Average hold time creates 60% abandonment at 1+ minutes.
+3. **Appeals & Reconciliation** — Member files appeal or requests corrections. Less than 1% of denied claims ever reach this step.
+4. **Final Payment & Tracking** — Member pays via HSA/FSA portal, provider billing website, or tracking sheet.
+
+**The core failure:** Resolution requires awareness (knowing something is wrong), persistence (making multiple calls), and domain knowledge (understanding CARC codes, SBC rules, and appeal rights). The system places the entire burden on the person with the least context.
 
 ---
 
 ## 3. The Member 360 Solution — Agentic Advocate
 
+### From Manual Middleman to Autonomous Advocate
+
+The traditional workflow requires the member to act as a manual router between the payer, provider, and their own plan documents. Member 360 replaces this with an agentic advocate that sits on top of the existing systems of record.
+
+### Unified Member 360 Hub
+
+The agent draws from a unified data layer that aggregates:
+
+| Data Source | What It Provides | Integration |
+|---|---|---|
+| Enrollment History | Plan type, coverage tier, effective dates | Payer system |
+| Claims History | Past EOBs, denial patterns, resolution history | Adjudication engine |
+| Preferred Provider Network | In-network status, provider NPI, facility type | Network database |
+| Demographics | Member ID, dependents, contact information | HR/enrollment system |
+| Prescription History | Formulary status, prior auth requirements for Rx | PBM integration |
+| Plan Benefits & Deductible Status | SBC rules, accumulator data, OOP tracking | Benefits platform API |
+
 ### The 4-Step Agent Pipeline
 
-| Step | What Happens | Code Implementation |
+| Step | What Happens | Technical Implementation |
 |---|---|---|
-| 1. Data Ingest & Parsing | Extract denial codes, service type, amounts from EOB | `EOBParser.parse()` in `app.py` |
-| 2. Profile Validation | Check member profile, route to human escalation if needed | Profile quality scoring |
-| 3. Rules (RAG) | Query plan SBC for the specific rule that applies | `SBCRetriever.retrieve()` — FAISS + deterministic fallback |
-| 4. Reasoning & Advocacy | Analyze benefits, validate network status, assign action ownership | `ReconciliationAgent._reason()` — rule-based logic |
+| **1. Data Ingest & Parsing** | Extracts denial codes, service type, amounts, provider info from EOB | `eob_parser.py` — regex-based structured extraction into typed `EOBRecord` dataclass |
+| **2. Profile Validation & Refinement** | Checks member profile quality, routes to specialized intervention if needed (e.g., call center for complex cases) | Profile quality scoring — determines if automated resolution is appropriate or human escalation is required |
+| **3. Rules (RAG)** | Queries the plan's SBC document to retrieve the specific rule that applies | `sbc_retriever.py` — FAISS vector store with all-MiniLM-L6-v2 embeddings, scoped to the section referenced by the denial mapping |
+| **4. Reasoning & Advocacy Strategy** | Analyzes plan benefits, validates network provider status, assigns action ownership (Member vs. Provider vs. Plan), generates resolution script | `reconciliation.py` — rule-based logic comparing EOB fields against retrieved SBC text, with consistency checking and citation enforcement |
 
-### What the Member Gets
+### Output: Unified Resolution Statement
 
-Instead of navigating the manual resolution path, the agent produces:
+Instead of forcing the member to reconcile multiple documents across multiple portals, the agent produces:
 
-- **Plain-English explanation** — what happened and why
-- **Action ownership** — provider's job, member's job, or plan's job
-- **Resolution script** — word-for-word call script with claim details pre-filled
-- **Financial context** — deductible status, OOP progress, potential savings
-- **SBC citation** — the exact plan rule referenced, by section name
+- **Plain-English explanation** — "Your MRI was denied because the provider didn't get pre-approval"
+- **Action ownership** — "This is the provider's responsibility to fix, not yours"
+- **Resolution script** — Word-for-word call script with claim ID, DOS, provider NPI pre-filled
+- **Financial context** — Deductible status, OOP progress, potential savings if resolved
+- **SBC citation** — The exact plan rule referenced, by section name
 
 ### Design Constraints
 
-| Constraint | How It's Enforced |
-|---|---|
-| Anti-hallucination | Unknown codes rejected. SBC sections cited by name. RAG retrieval status visible. |
-| Role boundary | "Interpretation layer only" disclaimer on every screen. Never overrides adjudication. |
-| Deterministic-first | Denial code lookup is JSON, not inference. RAG is scoped, not open-ended. Reasoning is rule-based. |
-| Auditable pipeline | Every step logged and visible via tool chain visualization. |
+These constraints are enforced in both the codebase and the UI:
+
+- **Anti-hallucination:** Unknown denial codes are rejected outright — the system says "I cannot interpret this claim" rather than guessing. Every response cites the SBC section by name.
+- **Role boundary:** The agent interprets adjudication outcomes but never overrides them. The disclaimer "This is an interpretation layer. Final financial determinations are held by the Adjudication System of Record" appears on every screen.
+- **Deterministic-first:** Denial code interpretation is a JSON lookup, not model inference. Plan rule retrieval is scoped RAG, not open-ended search. Reasoning is rule-based logic, not generative inference.
+- **Auditable pipeline:** Every step (parse → lookup → retrieve → reason) is logged and visible to the member via the tool chain visualization.
 
 ---
 
 ## Mapping to the Codebase
 
-| Concept in These Diagrams | File / Class |
+| Concept | Implementation |
 |---|---|
-| EOB Anatomy & Parsing | `EOBParser` in `app.py` |
-| Denial Code Lookup | `data/denial_mapping.json` |
-| SBC Rule Retrieval (RAG) | `SBCRetriever` in `app.py` |
-| Consistency Reasoning | `ReconciliationAgent._reason()` in `app.py` |
-| Resolution Script | `DenialMapping.script` field |
-| Tool Chain Visibility | `ToolChain` component in `prototypes/member360_chat.jsx` |
-| Architecture Diagram | `prototypes/member360_architecture.jsx` |
+| EOB Anatomy & Parsing | `backend/app/services/eob_parser.py` |
+| Denial Code Lookup | `backend/data/denial_mapping.json` + `denial_lookup.py` |
+| SBC Rule Retrieval (RAG) | `backend/app/services/sbc_retriever.py` — FAISS + deterministic fallback |
+| Consistency Reasoning | `backend/app/services/reconciliation.py` — facility checks, timeline validation |
+| Resolution Script Output | `DenialMapping.script` field with claim ID and date personalization |
+| Member Financial Context | Accumulator data in `frontend/components/member_panel.jsx` |
+| Tool Chain Visibility | `frontend/components/chat_tools.jsx` |
+| Role Boundary Disclaimer | Rendered on every screen in the React UI |
+| Interactive Prototypes | `prototypes/member360_chat.jsx`, `prototypes/member360_architecture.jsx` |
 
 ---
 
-## Sources
+## Data Sources Referenced
 
-- CMS Transparency in Coverage PUF, 2024
-- KFF Claims Denials & Appeals Analysis, 2025
-- AHA Costs of Caring Report, 2025
-- Experian Health State of Claims Survey, 2025
-- Experian Health State of Patient Access Survey, 2026
+- CMS Transparency in Coverage PUF, 2024 — 8.8M denied in-network claims
+- KFF Claims Denials & Appeals Analysis, 2025 — <1% appeal rate, 44% overturn rate on appeal
+- AHA Costs of Caring Report, 2025 — $18B spent overturning denials, 70% of appealed denials eventually paid
+- Experian Health State of Claims Survey, 2025 — 11.8% initial denial rate, rising for 3rd consecutive year
+- Experian Health State of Patient Access Survey, 2026 — 36% of members report difficulty with authorizations, 28% experienced care delays from insurance verification
 
 ---
 
