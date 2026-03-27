@@ -1,32 +1,69 @@
+# ═══════════════════════════════════════════════════════════════
+# PUBLIC REPO — ALLOWLIST GITIGNORE
+#
+# This repo is the LinkedIn-facing showcase for Member 360.
+# It is managed exclusively by the sync script in member-360-private.
+#
+#   RULE: Everything is ignored by default.
+#         Only explicitly allowed paths can be tracked.
+#
+# This means `git add -A` is SAFE — it cannot accidentally stage
+# files that don't belong here, no matter what ends up on disk.
+#
+# To add a new path: update PUBLIC_MANIFEST in member-360-private
+# AND add a negation pattern here, then run the sync script.
+# ═══════════════════════════════════════════════════════════════
+
+# ── Step 1: Block everything at the root level ───────────────────
+/*
+
+# ── Step 2: Allow specific root-level files ──────────────────────
+!/.gitignore
+!/LICENSE
+!/README.md
+!/demo.sh
+
+# ── Step 3: Allow specific root-level directories ────────────────
+#    (must allow the directory BEFORE allowing its contents)
+!/backend/
+!/frontend/
+!/docs/
+!/prototypes/
+!/archive/
+!/tests/
+
+# ── Step 4: Allow all contents within allowed directories ────────
+!backend/**
+!frontend/**
+
+# docs: only the architecture subfolder — block everything else in docs/
+/docs/*
+!/docs/architecture/
+!/docs/architecture/**
+
+# prototypes: only the demo subfolder — block everything else in prototypes/
+/prototypes/*
+!/prototypes/demo/
+!/prototypes/demo/**
+
+!archive/**
+!tests/**
+
+# ── Always exclude regardless of the above ───────────────────────
+.DS_Store
 __pycache__/
 *.pyc
+*.pyo
 .venv/
 venv/
 *.egg-info/
 .env
-vectorstore/
-.DS_Store
+*.env.*
 node_modules/
 *.db
 *.sqlite
-*.csv
-*.xlsx
-
-# Root-level legacy files (v1 artifacts, moved to prototype-v1/)
-/app.py
-/requirements.txt
-/data/
-
-# Large binary / media files (don't bloat the repo)
+vectorstore/
 *.mp4
 *.mov
 *.avi
 *.zip
-
-# Internal / AI session artifacts — never commit these
-.backups/
-sessions/
-RESUME.md
-AUDIT_LOG.md
-docs/context/
-scripts/
