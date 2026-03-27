@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Member 360 — Agentic Experience Layer</title>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              blue: { 100: '#0053e2', 110: '#004acc', 130: '#003ba3' },
+              spark: { 100: '#ffc220', 140: '#995213', 10: '#fff8e6' },
+              red: { 100: '#ea1100', 10: '#fef2f2' },
+              green: { 100: '#2a8703', 10: '#f0fdf4' },
+            },
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+    body { font-family: 'DM Sans', sans-serif; margin: 0; }
+    @keyframes fade-up { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+    .animate-fade-up { animation: fade-up 0.3s ease; }
+  </style>
+</head>
+<body class="bg-gray-950 text-gray-100">
+  <div id="root"></div>
+  <script type="text/babel" src="/components/chat.jsx"></script>
+  <script type="text/babel" src="/components/app_shell.jsx"></script>
+  <script type="text/babel">
+    ReactDOM.createRoot(document.getElementById('root')).render(
+      React.createElement(AppShell)
+    );
+  </script>
+</body>
+</html>

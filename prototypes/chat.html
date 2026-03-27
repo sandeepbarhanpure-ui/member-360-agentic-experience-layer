@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Member 360 — Architecture Diagram</title>
+  <title>Member 360 — Agentic Chat UI</title>
   <script crossorigin src="./vendor/react.min.js"></script>
   <script crossorigin src="./vendor/react-dom.min.js"></script>
   <script src="./vendor/babel.min.js"></script>
@@ -22,12 +22,9 @@
 <body>
   <a class="back-link" href="index.html">← All Demos</a>
   <div id="root"></div>
-  <!-- Data: LAYERS, DATA_FLOWS, PRINCIPLES, C, FONT, MONO, FONTS_URL -->
-<script src="member360_architecture_data.js"></script>
-<!-- Components: diagram, nodes, sidebar, labels -->
-<script type="text/babel" src="member360_architecture.jsx"></script>
+  <script type="text/babel" src="member360_chat.jsx"></script>
   <script type="text/babel">
-    ReactDOM.createRoot(document.getElementById('root')).render(React.createElement(ArchitectureDiagram));
+    ReactDOM.createRoot(document.getElementById('root')).render(React.createElement(AgenticChatUI));
   </script>
 </body>
 </html>
