@@ -17,6 +17,20 @@
     h1 span { color: #0053e2; }
     .subtitle { text-align: center; color: #94a3b8; margin-bottom: 3rem; font-size: 1.1rem; }
     .cards { display: grid; gap: 1.5rem; }
+    .version-badge {
+      display: inline-block; margin-bottom: 0.4rem;
+      padding: 0.2rem 0.6rem; border-radius: 12px;
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+    }
+    .badge-v2 { background: rgba(0,83,226,0.2); color: #60a5fa; border: 1px solid rgba(0,83,226,0.35); }
+    .badge-v1 { background: rgba(255,255,255,0.05); color: #64748b; border: 1px solid rgba(255,255,255,0.1); }
+    .new-pill {
+      display: inline-block; margin-left: 0.5rem;
+      padding: 0.15rem 0.5rem; border-radius: 10px;
+      font-size: 0.65rem; font-weight: 700;
+      background: rgba(255,194,32,0.15); color: #ffc220;
+      border: 1px solid rgba(255,194,32,0.3); vertical-align: middle;
+    }
     a.card {
       display: block; text-decoration: none; color: inherit;
       background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
@@ -48,9 +62,17 @@
         <p>Interactive 4-layer architecture with click-to-inspect component details and data flow visualization.</p>
         <span class="tag">Interactive exploration</span>
       </a>
+      <a class="card" href="chat_v2.html" style="border-color: rgba(0,83,226,0.3);">
+        <div class="card-icon">💬</div>
+        <div><span class="version-badge badge-v2">v2</span><span class="new-pill">NEW</span></div>
+        <h2>Agentic Chat UI <span style="font-size:0.85rem; font-weight:400; color:#64748b;">Multi-Claim</span></h2>
+        <p>Sarah picks from 5 real claims — denied MRI, approved wellness, partial PT, pending derm visit, and a surprise ER bill. Each claim unlocks its own advocacy flow with tool reasoning, cards, and call scripts.</p>
+        <span class="tag">5 claims &times; multiple flows</span>
+      </a>
       <a class="card" href="chat.html">
         <div class="card-icon">💬</div>
-        <h2>Agentic Chat UI</h2>
+        <div><span class="version-badge badge-v1">v1</span></div>
+        <h2>Agentic Chat UI <span style="font-size:0.85rem; font-weight:400; color:#64748b;">Single Claim</span></h2>
         <p>Conversational Benefits Advocate with tool-chain visualization, denial explanation cards, and actionable call scripts.</p>
         <span class="tag">6 conversation flows</span>
       </a>
