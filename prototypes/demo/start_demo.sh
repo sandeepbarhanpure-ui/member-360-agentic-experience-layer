@@ -28,7 +28,7 @@ echo ""
 
 # Start server in background
 cd "$DIR"
-python3 -m http.server $PORT &
+python3 -m http.server $PORT --bind 127.0.0.1 &
 SERVER_PID=$!
 
 # Give it a moment to boot
