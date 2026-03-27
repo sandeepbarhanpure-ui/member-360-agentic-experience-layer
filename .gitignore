@@ -23,7 +23,10 @@ node_modules/
 *.avi
 *.zip
 
-# Private repo — AI artifacts and session logs ARE welcome here
-# Only exclude true secrets and build artifacts
-.env
-*.env.*
+# Internal / AI session artifacts — never commit these
+.backups/
+sessions/
+RESUME.md
+AUDIT_LOG.md
+docs/context/
+scripts/
