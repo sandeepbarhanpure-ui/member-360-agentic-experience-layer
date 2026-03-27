@@ -1,5 +1,7 @@
 # Patient Journey & Product Thinking
 
+> This document maps the full patient journey across healthcare benefits, identifies the highest-friction phase, and shows how Member 360 addresses it. It provides the product context behind the codebase.
+
 ---
 
 ## 1. The Full Journey — 5 Phases of Benefits Navigation
@@ -46,24 +48,24 @@ When a claim is processed, the member receives an Explanation of Benefits (EOB).
 | **Claim Denied (Pre-Auth)** | Prior authorization missing — provider didn't file or plan didn't respond | 9% of all denials (KFF/CMS) |
 | **Reconciliation Mismatch** | EOB says one amount, provider bill says another, member has no way to reconcile | Extremely common |
 
-### How Members Currently Navigate This (Without Member 360)
+### How Patients Currently Navigate This (Without Member 360)
 
 The resolution path today is entirely manual and member-initiated:
 
-1. **Review EOB & Bill** — Member compares documents at home. Touchpoint: mail/email.
-2. **Research & Clarification** — Member calls carrier member services and/or provider billing department. Average hold time creates 60% abandonment at 1+ minutes.
-3. **Appeals & Reconciliation** — Member files appeal or requests corrections. Less than 1% of denied claims ever reach this step.
-4. **Final Payment & Tracking** — Member pays via HSA/FSA portal, provider billing website, or tracking sheet.
+1. **Review EOB & Bill** — Patient compares documents at home. Touchpoint: mail/email.
+2. **Research & Clarification** — Patient calls carrier member services and/or provider billing department. Average hold time creates 60% abandonment at 1+ minutes.
+3. **Appeals & Reconciliation** — Patient files appeal or requests corrections. Touchpoints: carrier appeals department, patient advocate. Less than 1% of denied claims ever reach this step.
+4. **Final Payment & Tracking** — Patient pays via HSA/FSA portal, provider billing website, or tracking sheet.
 
 **The core failure:** Resolution requires awareness (knowing something is wrong), persistence (making multiple calls), and domain knowledge (understanding CARC codes, SBC rules, and appeal rights). The system places the entire burden on the person with the least context.
 
 ---
 
-## 3. The Member 360 Solution — Agentic Advocate
+## 3. The Member 360 Solution — Agentic AI Advocate
 
 ### From Manual Middleman to Autonomous Advocate
 
-The traditional workflow requires the member to act as a manual router between the payer, provider, and their own plan documents. Member 360 replaces this with an agentic advocate that sits on top of the existing systems of record.
+The traditional workflow requires the patient to act as a manual router between the payer, provider, and their own plan documents. Member 360 replaces this with an agentic AI advocate that sits on top of the existing systems of record.
 
 ### Unified Member 360 Hub
 
@@ -82,10 +84,10 @@ The agent draws from a unified data layer that aggregates:
 
 | Step | What Happens | Technical Implementation |
 |---|---|---|
-| **1. Data Ingest & Parsing** | Extracts denial codes, service type, amounts, provider info from EOB | `eob_parser.py` — regex-based structured extraction into typed `EOBRecord` dataclass |
+| **1. Data Ingest & Parsing** | Extracts denial codes, service type, amounts, provider info from EOB | `EOBParser` class — regex-based structured extraction into typed `EOBRecord` dataclass |
 | **2. Profile Validation & Refinement** | Checks member profile quality, routes to specialized intervention if needed (e.g., call center for complex cases) | Profile quality scoring — determines if automated resolution is appropriate or human escalation is required |
-| **3. Rules (RAG)** | Queries the plan's SBC document to retrieve the specific rule that applies | `sbc_retriever.py` — FAISS vector store with all-MiniLM-L6-v2 embeddings, scoped to the section referenced by the denial mapping |
-| **4. Reasoning & Advocacy Strategy** | Analyzes plan benefits, validates network provider status, assigns action ownership (Member vs. Provider vs. Plan), generates resolution script | `reconciliation.py` — rule-based logic comparing EOB fields against retrieved SBC text, with consistency checking and citation enforcement |
+| **3. Rules (RAG)** | Queries the plan's SBC document to retrieve the specific rule that applies | `SBCRetriever` class — FAISS vector store with all-MiniLM-L6-v2 embeddings, scoped to the section referenced by the denial mapping |
+| **4. Reasoning & Advocacy Strategy** | Analyzes plan benefits, validates network provider status, assigns action ownership (Member vs. Provider vs. Plan), generates resolution script | `ReconciliationAgent._reason()` — rule-based logic comparing EOB fields against retrieved SBC text, with consistency checking and citation enforcement |
 
 ### Output: Unified Resolution Statement
 
@@ -99,7 +101,7 @@ Instead of forcing the member to reconcile multiple documents across multiple po
 
 ### Design Constraints
 
-These constraints are enforced in both the codebase and the UI:
+These constraints are non-negotiable and are enforced in both the codebase and the UI:
 
 - **Anti-hallucination:** Unknown denial codes are rejected outright — the system says "I cannot interpret this claim" rather than guessing. Every response cites the SBC section by name.
 - **Role boundary:** The agent interprets adjudication outcomes but never overrides them. The disclaimer "This is an interpretation layer. Final financial determinations are held by the Adjudication System of Record" appears on every screen.
@@ -110,27 +112,26 @@ These constraints are enforced in both the codebase and the UI:
 
 ## Mapping to the Codebase
 
-| Concept | Implementation |
+| Concept in These Diagrams | Implementation in Code |
 |---|---|
-| EOB Anatomy & Parsing | `backend/app/services/eob_parser.py` |
-| Denial Code Lookup | `backend/data/denial_mapping.json` + `denial_lookup.py` |
-| SBC Rule Retrieval (RAG) | `backend/app/services/sbc_retriever.py` — FAISS + deterministic fallback |
-| Consistency Reasoning | `backend/app/services/reconciliation.py` — facility checks, timeline validation |
-| Resolution Script Output | `DenialMapping.script` field with claim ID and date personalization |
-| Member Financial Context | Accumulator data in `frontend/components/member_panel.jsx` |
-| Tool Chain Visibility | `frontend/components/chat_tools.jsx` |
-| Role Boundary Disclaimer | Rendered on every screen in the React UI |
-| Interactive Prototypes | `prototypes/member360_chat.jsx`, `prototypes/member360_architecture.jsx` |
+| EOB Anatomy & Parsing | `EOBParser.parse()` in `app.py` |
+| Denial Code Lookup | `denial_mapping.json` + `ReconciliationAgent.reconcile()` |
+| SBC Rule Retrieval (RAG) | `SBCRetriever.retrieve()` with FAISS + deterministic fallback |
+| Consistency Reasoning | `ReconciliationAgent._reason()` — facility checks, timeline validation |
+| Resolution Script Output | `DenialMapping.script` field with `[ID]` and `[Date]` personalization |
+| Member Financial Context | Accumulator data in chat UI (`member360_chat.jsx`) |
+| Tool Chain Visibility | `ToolChain` component in `member360_chat.jsx` |
+| Role Boundary Disclaimer | Rendered on every screen in both Streamlit and React UIs |
 
 ---
 
 ## Data Sources Referenced
 
-- CMS Transparency in Coverage PUF, 2024 — 8.8M denied in-network claims
-- KFF Claims Denials & Appeals Analysis, 2025 — <1% appeal rate, 44% overturn rate on appeal
-- AHA Costs of Caring Report, 2025 — $18B spent overturning denials, 70% of appealed denials eventually paid
-- Experian Health State of Claims Survey, 2025 — 11.8% initial denial rate, rising for 3rd consecutive year
-- Experian Health State of Patient Access Survey, 2026 — 36% of members report difficulty with authorizations, 28% experienced care delays from insurance verification
+- CMS Transparency in Coverage PUF, 2024 (8.8M denied in-network claims)
+- KFF Claims Denials & Appeals Analysis, 2025 (<1% appeal rate, 44% overturn rate)
+- AHA Costs of Caring Report, 2025 ($18B spent overturning denials, 70% eventually paid)
+- Experian Health State of Claims Survey, 2025 (11.8% initial denial rate, rising for 3rd consecutive year)
+- Experian Health State of Patient Access Survey, 2026 (36% of patients report difficulty with authorizations, 28% experienced care delays from insurance verification)
 
 ---
 
