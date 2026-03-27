@@ -17,6 +17,12 @@ node_modules/
 /requirements.txt
 /data/
 
+# Large binary / media files (don't bloat the repo)
+*.mp4
+*.mov
+*.avi
+*.zip
+
 # Internal session artifacts
 RESUME.md
 .backups/
