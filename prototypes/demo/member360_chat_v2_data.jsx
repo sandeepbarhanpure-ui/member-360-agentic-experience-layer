@@ -1,3 +1,6 @@
+// Copyright (c) 2026 Sandeep Barhanpure. All Rights Reserved.
+// Proprietary software — see LICENSE for terms.
+
 /* ═══════════════════════════════════════════════════════════════
    MEMBER 360 — V2 DATA LAYER
    5 claims for Sarah Mitchell — multi-context advocacy

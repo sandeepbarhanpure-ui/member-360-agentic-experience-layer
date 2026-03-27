@@ -1,3 +1,6 @@
+// Copyright (c) 2026 Sandeep Barhanpure. All Rights Reserved.
+// Proprietary software — see LICENSE for terms.
+
 /* ═══════════════════════════════════════════════════════════════
    MEMBER 360 — V2 COMPONENTS
    Depends on (in load order):

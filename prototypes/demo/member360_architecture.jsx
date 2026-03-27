@@ -1,3 +1,6 @@
+// Copyright (c) 2026 Sandeep Barhanpure. All Rights Reserved.
+// Proprietary software — see LICENSE for terms.
+
 /* ══════════════════════════════════════════════════════════════
    MEMBER 360 — ARCHITECTURE DIAGRAM COMPONENTS
    Data (LAYERS, DATA_FLOWS, PRINCIPLES, C, FONT, MONO,

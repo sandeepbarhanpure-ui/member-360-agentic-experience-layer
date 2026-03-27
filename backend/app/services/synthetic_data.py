@@ -1,3 +1,6 @@
+# Copyright (c) 2026 Sandeep Barhanpure. All Rights Reserved.
+# Proprietary software — see LICENSE for terms.
+
 """Synthetic data — in-memory fixtures for the prototype.
 
 When you’re ready to integrate real systems, swap these with

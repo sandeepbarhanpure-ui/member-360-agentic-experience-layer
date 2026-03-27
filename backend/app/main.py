@@ -1,3 +1,6 @@
+# Copyright (c) 2026 Sandeep Barhanpure. All Rights Reserved.
+# Proprietary software — see LICENSE for terms.
+
 """Member 360 — Agentic Experience Layer (FastAPI).
 
 A scalable API layer that interprets adjudication outcomes and translates

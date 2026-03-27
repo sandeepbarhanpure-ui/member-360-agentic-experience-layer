@@ -1,3 +1,6 @@
+// Copyright (c) 2026 Sandeep Barhanpure. All Rights Reserved.
+// Proprietary software — see LICENSE for terms.
+
 /* Agentic Chat UI — Main Component
    API-connected chat with tool-chain visualization */
 

@@ -1,3 +1,6 @@
+# Copyright (c) 2026 Sandeep Barhanpure. All Rights Reserved.
+# Proprietary software — see LICENSE for terms.
+
 """Chat Agent — conversation flow engine.
 
 Maps user messages to tool-chain simulations and structured responses.

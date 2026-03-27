@@ -1,3 +1,6 @@
+// Copyright (c) 2026 Sandeep Barhanpure. All Rights Reserved.
+// Proprietary software — see LICENSE for terms.
+
 /* Member 360 Chat — Full Agentic Chat UI
    All components in one file to avoid script tag dependency issues */
 

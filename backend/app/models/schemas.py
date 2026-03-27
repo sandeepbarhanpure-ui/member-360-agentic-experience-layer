@@ -1,3 +1,6 @@
+# Copyright (c) 2026 Sandeep Barhanpure. All Rights Reserved.
+# Proprietary software — see LICENSE for terms.
+
 """Pydantic schemas for Member 360 API."""
 
 from __future__ import annotations

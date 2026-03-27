@@ -1,3 +1,6 @@
+# Copyright (c) 2026 Sandeep Barhanpure. All Rights Reserved.
+# Proprietary software — see LICENSE for terms.
+
 """Members API router."""
 
 from fastapi import APIRouter, HTTPException

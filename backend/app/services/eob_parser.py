@@ -1,3 +1,6 @@
+# Copyright (c) 2026 Sandeep Barhanpure. All Rights Reserved.
+# Proprietary software — see LICENSE for terms.
+
 """EOB Parser — extracts structured records from raw EOB text."""
 
 from __future__ import annotations

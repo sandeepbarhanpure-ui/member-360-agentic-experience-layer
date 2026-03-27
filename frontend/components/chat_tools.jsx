@@ -1,3 +1,6 @@
+// Copyright (c) 2026 Sandeep Barhanpure. All Rights Reserved.
+// Proprietary software — see LICENSE for terms.
+
 /* Chat Tool Chain Visualization Components */
 
 const TOOL_ICONS = {
