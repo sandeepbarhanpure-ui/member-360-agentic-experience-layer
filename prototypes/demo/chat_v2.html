@@ -33,8 +33,10 @@
   <a class="v1-link" href="chat.html">View V1</a>
   <div id="root"></div>
 
-  <!-- Data layer must load before components -->
-  <script type="text/babel" src="member360_chat_v2_data.jsx"></script>
+  <!-- Data layer: pure JS, no JSX — load as regular script so it runs
+       synchronously and all globals (CLAIMS_V2, FLOWS_BY_CLAIM, etc.)
+       are available before Babel processes the component file. -->
+  <script src="member360_chat_v2_data.jsx"></script>
   <script type="text/babel" src="member360_chat_v2.jsx"></script>
   <script type="text/babel">
     ReactDOM.createRoot(document.getElementById('root')).render(
