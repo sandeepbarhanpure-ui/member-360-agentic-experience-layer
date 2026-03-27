@@ -6,10 +6,10 @@ const { useState, useEffect, useRef, useCallback } = React;
 /* ═══ TOOL CHAIN VISUALIZATION ════════════════════════════════ */
 
 const TOOL_ICONS = {
-  read_eob: "📄", lookup_denial_code: "🔍", query_sbc_rag: "🧠",
-  reconcile: "⚖️", determine_action_path: "🛤️", check_timeline: "⏱️",
-  generate_script: "✏️", fetch_accumulators: "💰", pending_claims: "📋",
-  evaluate_appeal_path: "🔀", escalation_paths: "🚨",
+  read_eob: "", lookup_denial_code: "", query_sbc_rag: "",
+  reconcile: "", determine_action_path: "", check_timeline: "",
+  generate_script: "", fetch_accumulators: "", pending_claims: "",
+  evaluate_appeal_path: "", escalation_paths: "",
 };
 
 function ToolStep({ tool, state }) {
@@ -26,7 +26,7 @@ function ToolStep({ tool, state }) {
         isActive ? 'bg-blue-500/10 border-blue-500/20' :
         'bg-white/[0.03] border-gray-800'
       }`}>
-        {isDone ? <span className="text-emerald-400 text-[11px]">✓</span> :
+        {isDone ? <span className="text-emerald-400 text-[11px]"></span> :
          isActive ? <span className="inline-block w-2 h-2 rounded-full border-2 border-blue-500 border-t-transparent animate-spin" /> :
          <span className="text-[11px]">{TOOL_ICONS[tool.name] || "⚙"}</span>}
       </div>
@@ -109,7 +109,7 @@ function DenialCard({ card }) {
             ? 'bg-green-950 text-emerald-300 border-green-800'
             : 'bg-red-950 text-red-300 border-red-800'
         }`}>
-          {card.consistent ? '✓ Consistent' : '✗ Inconsistent'}
+          {card.consistent ? ' Consistent' : ' Inconsistent'}
         </span>
       </div>
       <div className="flex gap-5 flex-wrap">
@@ -149,7 +149,7 @@ function FinancialCard({ card }) {
         <Bar used={card.oop.used} max={card.oop.max} color="bg-teal-500" label="Out-of-Pocket Max" />
       </div>
       <div className="bg-emerald-500/[0.08] border border-emerald-500/15 rounded-md px-3 py-2 flex items-center gap-2">
-        <span className="text-sm">💡</span>
+        <span className="text-sm"></span>
         <span className="text-[12.5px] text-emerald-400 font-medium">
           Potential savings if resolved: {card.potentialSavings}
         </span>

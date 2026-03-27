@@ -1,10 +1,10 @@
 /* Chat Tool Chain Visualization Components */
 
 const TOOL_ICONS = {
-  read_eob: "📄", lookup_denial_code: "🔍", query_sbc_rag: "🧠",
-  reconcile: "⚖️", determine_action_path: "🛤️", check_timeline: "⏱️",
-  generate_script: "✏️", fetch_accumulators: "💰", pending_claims: "📋",
-  evaluate_appeal_path: "🔀", escalation_paths: "🚨",
+  read_eob: "", lookup_denial_code: "", query_sbc_rag: "",
+  reconcile: "", determine_action_path: "", check_timeline: "",
+  generate_script: "", fetch_accumulators: "", pending_claims: "",
+  evaluate_appeal_path: "", escalation_paths: "",
 };
 
 function ToolStep({ tool, state }) {
@@ -21,7 +21,7 @@ function ToolStep({ tool, state }) {
         isActive ? 'bg-blue-500/10 border-blue-500/20' :
         'bg-white/[0.03] border-gray-800'
       }`}>
-        {isDone ? <span className="text-emerald-400 text-[11px]">✓</span> :
+        {isDone ? <span className="text-emerald-400 text-[11px]"></span> :
          isActive ? <span className="inline-block w-2 h-2 rounded-full border-2 border-blue-500 border-t-transparent animate-spin" /> :
          <span className="text-[11px]">{TOOL_ICONS[tool.name] || "⚙"}</span>}
       </div>

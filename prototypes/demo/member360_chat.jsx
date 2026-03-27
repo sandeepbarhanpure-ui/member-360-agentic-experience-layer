@@ -241,10 +241,10 @@ function useStreamText(text, speed = 14, trigger = false) {
    ═══════════════════════════════════════════════════════════════ */
 
 const TOOL_ICONS = {
-  read_eob: "📄", lookup_denial_code: "🔍", query_sbc_rag: "🧠",
-  reconcile: "⚖️", determine_action_path: "🛤️", check_timeline: "⏱️",
-  generate_script: "✏️", fetch_accumulators: "💰", pending_claims: "📋",
-  evaluate_appeal_path: "🔀", escalation_paths: "🚨",
+  read_eob: "", lookup_denial_code: "", query_sbc_rag: "",
+  reconcile: "", determine_action_path: "", check_timeline: "",
+  generate_script: "", fetch_accumulators: "", pending_claims: "",
+  evaluate_appeal_path: "", escalation_paths: "",
 };
 
 function ToolStep({ tool, state, index }) {
@@ -267,7 +267,7 @@ function ToolStep({ tool, state, index }) {
         display: "flex", alignItems: "center", justifyContent: "center",
         fontSize: 12, transition: "all 0.3s ease",
       }}>
-        {isDone ? <span style={{ color: P.emerald, fontSize: 11 }}>✓</span> :
+        {isDone ? <span style={{ color: P.emerald, fontSize: 11 }}></span> :
          isActive ? <span style={{
            display: "inline-block", width: 8, height: 8, borderRadius: "50%",
            border: `2px solid ${P.accent}`, borderTopColor: "transparent",
@@ -367,7 +367,7 @@ function DenialCard({ card }) {
             ? { background: "#052E16", color: "#6EE7B7", border: "1px solid #14532D" }
             : { background: "#3B0712", color: "#FDA4AF", border: "1px solid #881337" }),
         }}>
-          {card.consistent ? "✓ Consistent" : "✗ Inconsistent"}
+          {card.consistent ? " Consistent" : " Inconsistent"}
         </span>
       </div>
       <div style={{ display: "flex", gap: 20, flexWrap: "wrap" }}>
@@ -413,7 +413,7 @@ function FinancialCard({ card }) {
         background: P.emeraldGlow, border: "1px solid rgba(16,185,129,0.15)",
         borderRadius: 6, padding: "8px 12px", display: "flex", alignItems: "center", gap: 8,
       }}>
-        <span style={{ fontSize: 14 }}>💡</span>
+        <span style={{ fontSize: 14 }}></span>
         <span style={{ fontFamily: FONT, fontSize: 12.5, color: P.emerald, fontWeight: 500 }}>
           Potential savings if resolved: {card.potentialSavings}
         </span>

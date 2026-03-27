@@ -654,7 +654,7 @@ def _render_header():
     st.markdown(
         """
         <div class="system-banner">
-            <strong>⚠ ROLE BOUNDARY</strong> &nbsp;—&nbsp;
+            <strong> ROLE BOUNDARY</strong> &nbsp;—&nbsp;
             This is an interpretation layer. Final financial determinations
             are held by the <strong>Adjudication System of Record</strong>.
             This tool does not decide if a claim is paid; it interprets
@@ -729,7 +729,7 @@ def _render_result(result: ReconciliationResult):
     st.markdown(
         f"""
         <div class="why-card">
-            <h3>💬 {mapping.reason}</h3>
+            <h3> {mapping.reason}</h3>
             <p>{mapping.plain_language}</p>
         </div>
         """,
@@ -746,7 +746,7 @@ def _render_result(result: ReconciliationResult):
     st.markdown(
         f"""
         <div class="how-card">
-            <h3>📋 Recommended Action</h3>
+            <h3> Recommended Action</h3>
             <div class="owner-badge">Action Owner: {mapping.action_owner}</div>
             <div class="script-box">"{script_filled}"</div>
         </div>
@@ -756,7 +756,7 @@ def _render_result(result: ReconciliationResult):
 
     # -- REASONING -------------------------------------------------------
     consistency_class = "consistent" if result.is_consistent else "inconsistent"
-    consistency_label = "✓ Consistent with Plan Rules" if result.is_consistent else "✗ Potential Inconsistency Detected"
+    consistency_label = " Consistent with Plan Rules" if result.is_consistent else " Potential Inconsistency Detected"
 
     rag_dot_class = "rag-on" if result.rag_available else "rag-off"
     rag_label = "RAG retrieval active" if result.rag_available else "Deterministic retrieval (RAG unavailable)"

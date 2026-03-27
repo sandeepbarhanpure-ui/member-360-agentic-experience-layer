@@ -60,7 +60,7 @@ function DashboardPage() {
     <div className="space-y-6">
       {/* System Banner */}
       <div className="bg-gray-900 border border-gray-700 border-l-4 border-l-[#ffc220] rounded-lg px-5 py-3 text-sm text-gray-400">
-        <strong className="text-[#ffc220]">⚠ ROLE BOUNDARY</strong> —
+        <strong className="text-[#ffc220]"> ROLE BOUNDARY</strong> —
         This is an interpretation layer. Final financial determinations are held by the <strong className="text-[#ffc220]">Adjudication System of Record</strong>.
       </div>
 
@@ -73,7 +73,7 @@ function DashboardPage() {
       </div>
 
       {/* Members Table */}
-      <SectionCard title="👥 Members" subtitle="Synthetic member profiles">
+      <SectionCard title=" Members" subtitle="Synthetic member profiles">
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead><tr className="text-gray-500 text-xs uppercase tracking-wider border-b border-gray-800">
@@ -103,7 +103,7 @@ function DashboardPage() {
       </SectionCard>
 
       {/* Claims Table */}
-      <SectionCard title="📋 Claims" subtitle="All synthetic claims">
+      <SectionCard title=" Claims" subtitle="All synthetic claims">
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead><tr className="text-gray-500 text-xs uppercase tracking-wider border-b border-gray-800">
@@ -189,7 +189,7 @@ Remark: Service requires prior authorization per plan guidelines.`;
 
   return (
     <div className="space-y-6">
-      <SectionCard title="📄 EOB Input" subtitle="Paste raw EOB text or use the default mock">
+      <SectionCard title=" EOB Input" subtitle="Paste raw EOB text or use the default mock">
         <textarea
           value={eobText}
           onChange={e => setEobText(e.target.value)}
@@ -204,7 +204,7 @@ Remark: Service requires prior authorization per plan guidelines.`;
             disabled={loading}
             className="px-6 py-2.5 bg-[#0053e2] hover:bg-[#004acc] active:bg-[#003ba3] text-white rounded-lg font-medium text-sm transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {loading ? 'Reconciling…' : '⚡ Run Reconciliation'}
+            {loading ? 'Reconciling…' : ' Run Reconciliation'}
           </button>
           <button
             onClick={() => { setEobText(DEFAULT_EOB); }}
@@ -263,14 +263,14 @@ function ReconciliationResultCard({ result }) {
       {/* The Why */}
       <div className="bg-gradient-to-br from-blue-950/60 to-gray-900 border border-blue-800/50 rounded-xl p-6">
         <h3 className="text-[#0053e2] font-bold text-base flex items-center gap-2 mb-3">
-          💬 {mapping.reason}
+           {mapping.reason}
         </h3>
         <p className="text-gray-300 leading-relaxed">{mapping.plain_language}</p>
       </div>
 
       {/* The How */}
       <div className="bg-gradient-to-br from-green-950/40 to-gray-900 border border-green-800/40 rounded-xl p-6">
-        <h3 className="text-[#2a8703] font-bold text-base flex items-center gap-2 mb-2">📋 Recommended Action</h3>
+        <h3 className="text-[#2a8703] font-bold text-base flex items-center gap-2 mb-2"> Recommended Action</h3>
         <span className="inline-block bg-green-900/60 text-green-300 text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full mb-4">
           Action Owner: {mapping.action_owner}
         </span>
@@ -281,7 +281,7 @@ function ReconciliationResultCard({ result }) {
           onClick={handleCopy}
           className="mt-3 px-4 py-1.5 text-xs border border-gray-600 text-gray-400 hover:text-white hover:bg-gray-800 rounded-lg transition-colors"
         >
-          {copied ? '✓ Copied!' : '📋 Copy Script'}
+          {copied ? ' Copied!' : ' Copy Script'}
         </button>
       </div>
 
@@ -293,7 +293,7 @@ function ReconciliationResultCard({ result }) {
             ? 'bg-green-900/50 text-green-300 border border-green-800'
             : 'bg-red-900/50 text-red-300 border border-red-800'
         }`}>
-          {is_consistent ? '✓ Consistent with Plan Rules' : '✗ Potential Inconsistency Detected'}
+          {is_consistent ? ' Consistent with Plan Rules' : ' Potential Inconsistency Detected'}
         </span>
         <div className="text-gray-400 text-sm leading-relaxed">
           {formatReasoning(reasoning)}
@@ -367,7 +367,7 @@ function DenialCodesPage() {
 
   return (
     <div className="space-y-4">
-      <SectionCard title="📖 Recognized Denial Codes" subtitle="Deterministic mapping — unknown codes are rejected, not guessed">
+      <SectionCard title=" Recognized Denial Codes" subtitle="Deterministic mapping — unknown codes are rejected, not guessed">
         <div className="space-y-4 mt-2">
           {codes.map(c => (
             <div key={c.code} className="bg-gray-800/50 border border-gray-700 rounded-lg p-5">
@@ -395,10 +395,10 @@ function AppShell() {
   const [page, setPage] = useState('chat');
 
   const pages = [
-    { id: 'chat', icon: '💬', label: 'Chat Agent' },
-    { id: 'dashboard', icon: '📊', label: 'Dashboard' },
-    { id: 'reconcile', icon: '⚡', label: 'Reconcile' },
-    { id: 'codes', icon: '📖', label: 'Denial Codes' },
+    { id: 'chat', icon: '', label: 'Chat Agent' },
+    { id: 'dashboard', icon: '', label: 'Dashboard' },
+    { id: 'reconcile', icon: '', label: 'Reconcile' },
+    { id: 'codes', icon: '', label: 'Denial Codes' },
   ];
 
   // Chat page takes over the full viewport (has its own layout)

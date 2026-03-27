@@ -12,7 +12,7 @@ const MEMBER_V2 = {
 
 const CLAIMS_V2 = [
   {
-    id: "SFP-01", status: "DENIED", urgency: "high", icon: "🚫",
+    id: "SFP-01", status: "DENIED", urgency: "high", icon: "X",
     service: "MRI — Right Knee", provider: "Dr. James Whitfield",
     dos: "2026-03-10", billed: "$1,250.00", allowed: "$0.00",
     planPaid: "$0.00", memberOwes: "$1,250.00",
@@ -20,7 +20,7 @@ const CLAIMS_V2 = [
     facility: "Outpatient Clinic", npi: "1234567890",
   },
   {
-    id: "SFP-02", status: "APPROVED", urgency: "none", icon: "✅",
+    id: "SFP-02", status: "APPROVED", urgency: "none", icon: "",
     service: "Annual Wellness Visit", provider: "Dr. Linda Chen",
     dos: "2026-02-14", billed: "$320.00", allowed: "$320.00",
     planPaid: "$320.00", memberOwes: "$0.00",
@@ -28,7 +28,7 @@ const CLAIMS_V2 = [
     facility: "Primary Care Office", npi: "2345678901",
   },
   {
-    id: "SFP-03", status: "PARTIAL", urgency: "low", icon: "⚠️",
+    id: "SFP-03", status: "PARTIAL", urgency: "low", icon: "!",
     service: "Physical Therapy (6 sessions)", provider: "PT Associates of Chicago",
     dos: "2026-02-01 – 03-08", billed: "$900.00", allowed: "$600.00",
     planPaid: "$380.00", memberOwes: "$220.00",
@@ -36,7 +36,7 @@ const CLAIMS_V2 = [
     facility: "Outpatient PT Clinic", npi: "3456789012",
   },
   {
-    id: "SFP-04", status: "PENDING", urgency: "low", icon: "⏳",
+    id: "SFP-04", status: "PENDING", urgency: "low", icon: "~",
     service: "Dermatology Specialist Visit", provider: "Dr. Rachel Torres",
     dos: "2026-03-20", billed: "$450.00", allowed: "Pending",
     planPaid: "Pending", memberOwes: "TBD",
@@ -44,7 +44,7 @@ const CLAIMS_V2 = [
     facility: "Dermatology Associates", npi: "9876543210",
   },
   {
-    id: "SFP-05", status: "DENIED", urgency: "high", icon: "🚫",
+    id: "SFP-05", status: "DENIED", urgency: "high", icon: "X",
     service: "Emergency Room Visit", provider: "City General Hospital",
     dos: "2026-03-01", billed: "$2,800.00", allowed: "$0.00",
     planPaid: "$0.00", memberOwes: "$2,800.00",
@@ -147,7 +147,7 @@ const FLOWS_BY_CLAIM = {
     "what's covered under preventive care?": {
       tools: [T.rag("§ Preventive Care · ACA §2713 · USPSTF A/B recommendations · ACIP vaccines · Women's Health")],
       response: { type: "explanation", headline: "Preventive care covers a wide range of services at $0 cost-sharing.",
-        details: ["**Annual physicals & wellness visits** — 100% covered, no deductible.", "**Cancer screenings** — mammograms (annually 40+), colonoscopies (every 10 years 45+), cervical cancer screening.", "**All ACIP-recommended vaccines** — flu, COVID, shingles, RSV, pneumonia — $0 at in-network providers.", "**⚠️ Important caveat:** If your doctor addresses a **specific condition** during a preventive visit, that portion may be billed separately and hit your deductible."],
+        details: ["**Annual physicals & wellness visits** — 100% covered, no deductible.", "**Cancer screenings** — mammograms (annually 40+), colonoscopies (every 10 years 45+), cervical cancer screening.", "**All ACIP-recommended vaccines** — flu, COVID, shingles, RSV, pneumonia — $0 at in-network providers.", "**! Important caveat:** If your doctor addresses a **specific condition** during a preventive visit, that portion may be billed separately and hit your deductible."],
       },
       suggestions: ["Do other screenings qualify for $0?"],
     },
@@ -258,7 +258,7 @@ const FLOWS_BY_CLAIM = {
     "what do i actually owe?": {
       tools: [T.accum("Deductible: $620/$1,500 · OOP: $820/$4,500 · ER in-network benefit: 20% after deductible"), T.reconcile("$2,800 billed → ~$1,100 allowed (network rate) → $880 deductible → 20% coinsurance on balance → est. $220–$300 true member share")],
       response: { type: "financial_summary", headline: "True liability: ~$220–$300. Not $2,800.",
-        details: ["Under the No Surprises Act, your plan must apply **in-network ER rates**. Allowed amount based on network benchmarks: approximately **$1,100**.", "Your remaining deductible ($880) applies first. Then 20% coinsurance on the balance (~$220) = roughly **$44**. Total true member responsibility: **$220–$300**.", "⚠️ **Do not pay the $2,800 bill.** The out-of-network billed rate is not your financial responsibility under the NSA."],
+        details: ["Under the No Surprises Act, your plan must apply **in-network ER rates**. Allowed amount based on network benchmarks: approximately **$1,100**.", "Your remaining deductible ($880) applies first. Then 20% coinsurance on the balance (~$220) = roughly **$44**. Total true member responsibility: **$220–$300**.", "! **Do not pay the $2,800 bill.** The out-of-network billed rate is not your financial responsibility under the NSA."],
         card: { type: "financial_card", deductible: { used: 620, max: 1500 }, oop: { used: 820, max: 4500 }, potentialSavings: "$2,500.00" },
       },
       suggestions: ["How do I appeal this?", "What are my escalation options?"],

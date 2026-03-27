@@ -1,4 +1,4 @@
-# ⚕️ Member 360 — Agentic Experience Layer
+# ⚕ Member 360 — Agentic Experience Layer
 
 > An AI-powered interpretation layer for health plan claims that translates cryptic adjudication outcomes into plain-English member advocacy — with cited plan rules, deterministic guardrails, and actionable next steps.
 
@@ -6,7 +6,7 @@
 
 ![Member 360 Solution Architecture](docs/architecture/member360_solution_architecture.png)
 
-> 💡 **Try the interactive demo:** Clone the repo and run `./demo.sh` — no backend required, fully offline. Includes V1 and V2 multi-claim agentic chat UI.
+>  **Try the interactive demo:** Clone the repo and run `./demo.sh` — no backend required, fully offline. Includes V1 and V2 multi-claim agentic chat UI.
 
 ---
 
@@ -64,12 +64,12 @@ EOB Input → Parse → Lookup Denial Code → Retrieve Plan Rule (RAG) → Reas
 ```
 
 **The output for every claim:**
-- 💬 **The Why** — Plain-English explanation of exactly what happened
-- 📃 **The SBC Citation** — The exact plan rule that applies, by section name
-- 👤 **Action Ownership** — Is this the provider’s problem to fix, or the member’s?
-- 📞 **Call Script** — Word-for-word script with claim ID, DOS, and provider NPI pre-filled
-- 💰 **Financial Context** — Deductible status, OOP progress, what you actually owe
-- ⚖️ **Appeal Guidance** — Deadlines, next steps, escalation paths
+-  **The Why** — Plain-English explanation of exactly what happened
+-  **The SBC Citation** — The exact plan rule that applies, by section name
+-  **Action Ownership** — Is this the provider’s problem to fix, or the member’s?
+-  **Call Script** — Word-for-word script with claim ID, DOS, and provider NPI pre-filled
+-  **Financial Context** — Deductible status, OOP progress, what you actually owe
+-  **Appeal Guidance** — Deadlines, next steps, escalation paths
 
 ---
 
@@ -174,11 +174,11 @@ The V2 demo shows an agent helping a member navigate **5 simultaneous active cla
 
 | Claim | Status | Service | Member Owes | Key Scenario |
 |---|---|---|---|---|
-| #1 | 🔴 DENIED | MRI — Right Knee | $1,250 | Prior auth missing — CO-197 |
-| #2 | ✅ APPROVED | Annual Wellness | $0.00 | Preventive care covered 100% |
-| #3 | 🟡 PARTIAL | Physical Therapy x6 | $220 | CO-45 — benefit limit reached |
-| #4 | ⏳ PENDING | Dermatology Visit | TBD | Network status check needed |
-| #5 | 🔴 DENIED | ER Visit | $2,800 | No Surprises Act application |
+| #1 | DENIED | MRI — Right Knee | $1,250 | Prior auth missing — CO-197 |
+| #2 | APPROVED | Annual Wellness | $0.00 | Preventive care covered 100% |
+| #3 | PARTIAL | Physical Therapy x6 | $220 | CO-45 — benefit limit reached |
+| #4 | PENDING | Dermatology Visit | TBD | Network status check needed |
+| #5 | DENIED | ER Visit | $2,800 | No Surprises Act application |
 
 For each claim, the agent walks through: **why it happened → who’s responsible → what to say → what you owe → how to appeal**.
 

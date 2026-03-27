@@ -325,7 +325,7 @@ function WhyCard({ mapping, delay = 0 }) {
             background: "rgba(59,130,246,0.15)",
             display: "flex", alignItems: "center", justifyContent: "center",
             fontSize: 16,
-          }}>💬</div>
+          }}></div>
           <span style={{
             fontFamily: "'Outfit', sans-serif", fontSize: 17, fontWeight: 700,
             color: palette.blue,
@@ -375,7 +375,7 @@ function HowCard({ mapping, eob, delay = 0 }) {
             background: "rgba(16,185,129,0.15)",
             display: "flex", alignItems: "center", justifyContent: "center",
             fontSize: 16,
-          }}>📋</div>
+          }}></div>
           <span style={{
             fontFamily: "'Outfit', sans-serif", fontSize: 17, fontWeight: 700,
             color: palette.emerald,
@@ -417,7 +417,7 @@ function HowCard({ mapping, eob, delay = 0 }) {
               cursor: "pointer", transition: "all 0.2s ease",
             }}
           >
-            {copied ? "✓ Copied" : "Copy"}
+            {copied ? " Copied" : "Copy"}
           </button>
         </div>
       </div>
@@ -459,7 +459,7 @@ function ReasoningCard({ result, delay = 0 }) {
             ? { background: "#052E16", color: "#6EE7B7", border: "1px solid #14532D" }
             : { background: "#3B0712", color: "#FDA4AF", border: "1px solid #881337" }),
         }}>
-          {isConsistent ? "✓ Consistent with Plan Rules" : "✗ Potential Inconsistency Detected"}
+          {isConsistent ? " Consistent with Plan Rules" : " Potential Inconsistency Detected"}
         </span>
 
         <div style={{ marginTop: 18 }}>
@@ -783,7 +783,7 @@ function Member360Dashboard() {
                   fontFamily: "'Outfit', sans-serif",
                   fontSize: 13, color: "#9A8A5E", lineHeight: 1.6, margin: 0,
                 }}>
-                  <strong style={{ color: palette.amber }}>⚠ ROLE BOUNDARY</strong> —
+                  <strong style={{ color: palette.amber }}> ROLE BOUNDARY</strong> —
                   This is an interpretation layer. Final financial determinations
                   are held by the <strong style={{ color: palette.amber }}>Adjudication System of Record</strong>.
                   This tool does not decide if a claim is paid; it interprets the

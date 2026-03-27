@@ -22,10 +22,10 @@ const MONO2 = `'IBM Plex Mono','SF Mono',monospace`;
 const FONT_URL2 = "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap";
 
 const TOOL_ICONS2 = {
-  read_eob:"📄", lookup_denial_code:"🔍", query_sbc_rag:"🧠",
-  reconcile:"⚖️", determine_action_path:"🛤️", check_timeline:"⏱️",
-  generate_script:"✏️", fetch_accumulators:"💰", check_claim_status:"🔄",
-  evaluate_appeal_path:"🔀", escalation_paths:"🚨", check_network:"🌐",
+  read_eob:"", lookup_denial_code:"", query_sbc_rag:"",
+  reconcile:"", determine_action_path:"", check_timeline:"",
+  generate_script:"", fetch_accumulators:"", check_claim_status:"",
+  evaluate_appeal_path:"", escalation_paths:"", check_network:"",
 };
 
 /* ── Markdown bold formatter ── */
@@ -49,7 +49,7 @@ function ToolStep2({ tool, state }) {
         background: done ? P2.emeraldGlow : active ? P2.accentGlow : "rgba(255,255,255,0.03)",
         border:`1px solid ${done ? "rgba(16,185,129,0.2)" : active ? "rgba(59,130,246,0.2)" : P2.borderTool}`,
         display:"flex", alignItems:"center", justifyContent:"center", fontSize:12, transition:"all 0.3s" }}>
-        {done ? <span style={{ color:P2.emerald, fontSize:11 }}>✓</span>
+        {done ? <span style={{ color:P2.emerald, fontSize:11 }}></span>
           : active ? <span style={{ display:"inline-block", width:8, height:8, borderRadius:"50%",
               border:`2px solid ${P2.accent}`, borderTopColor:"transparent",
               animation:"toolspin2 0.7s linear infinite" }} />
@@ -115,7 +115,7 @@ function DenialCard2({ card }) {
           ...(card.consistent
             ? { background:"#052E16", color:"#6EE7B7", border:"1px solid #14532D" }
             : { background:"#3B0712", color:"#FDA4AF", border:"1px solid #881337" }) }}>
-          {card.consistent ? "✓ Consistent" : "✗ Wrongful — Appeal"}
+          {card.consistent ? " Consistent" : " Wrongful — Appeal"}
         </span>
       </div>
       <div style={{ display:"flex", gap:20, flexWrap:"wrap" }}>
@@ -152,7 +152,7 @@ function FinancialCard2({ card }) {
       {card.potentialSavings && (
         <div style={{ background:P2.emeraldGlow, border:"1px solid rgba(16,185,129,0.15)",
           borderRadius:6, padding:"8px 12px", display:"flex", alignItems:"center", gap:8 }}>
-          <span style={{ fontSize:14 }}>💡</span>
+          <span style={{ fontSize:14 }}></span>
           <span style={{ fontFamily:FONT2, fontSize:12.5, color:P2.emerald, fontWeight:500 }}>
             Potential savings if resolved: {card.potentialSavings}
           </span>

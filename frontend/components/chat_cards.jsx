@@ -15,7 +15,7 @@ function DenialCard({ card }) {
             ? 'bg-green-950 text-emerald-300 border-green-800'
             : 'bg-red-950 text-red-300 border-red-800'
         }`}>
-          {card.consistent ? '✓ Consistent' : '✗ Inconsistent'}
+          {card.consistent ? ' Consistent' : ' Inconsistent'}
         </span>
       </div>
       <div className="flex gap-5 flex-wrap">
@@ -55,7 +55,7 @@ function FinancialCard({ card }) {
         <Bar used={card.oop.used} max={card.oop.max} color="bg-teal-500" label="Out-of-Pocket Max" />
       </div>
       <div className="bg-emerald-500/[0.08] border border-emerald-500/15 rounded-md px-3 py-2 flex items-center gap-2">
-        <span className="text-sm">💡</span>
+        <span className="text-sm"></span>
         <span className="text-[12.5px] text-emerald-400 font-medium">
           Potential savings if resolved: {card.potentialSavings}
         </span>
