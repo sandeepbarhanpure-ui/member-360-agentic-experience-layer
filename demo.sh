@@ -36,7 +36,7 @@ if ! command -v python3 &>/dev/null; then
   exit 1
 fi
 
-# Clear port if occupied (never kill Teams on 8080 or code-puppy)
+# Clear port if occupied
 if lsof -ti :$PORT >/dev/null 2>&1; then
   echo "  WARNING: Port $PORT in use -- clearing it..."
   lsof -ti :$PORT | xargs kill -9 2>/dev/null

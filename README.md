@@ -2,7 +2,11 @@
 
 > An interpretation layer for self-funded health plans that translates claims adjudication outcomes into plain-English member advocacy using deterministic mapping + RAG-based reasoning.
 
-**This system does not decide if a claim is paid.** It reads the outcome from the adjudication engine and translates it for the associate — with cited plan rules, consistency checks, and actionable next steps.
+**This system does not decide if a claim is paid.** It reads the outcome from the adjudication engine and translates it for the member — with cited plan rules, consistency checks, and actionable next steps.
+
+![Member 360 Solution Architecture](docs/architecture/member360_solution_architecture.png)
+
+> 💡 **Try the interactive demo:** Clone the repo and run `./demo.sh` — no backend required, fully offline.
 
 ---
 
@@ -198,25 +202,17 @@ member-360-scaled/
 │   │   ├── member360_solution_architecture.png
 │   │   ├── journey_map_overview.png
 │   │   └── phase4_friction_deep_dive.png
-│   ├── product/                     # Product strategy & roadmap
-│   │   ├── PRODUCT_THINKING.md      # Full product context & patient journey
-│   │   └── github_issues.md         # Open issues & proposed features
-│   └── context/                     # Project & LLM context docs
-│       ├── member360_llm_context.md # Full context for LLM sessions
-│       ├── Member360_Project_Context_2026-03-26.md  # Latest project context
-│       └── versions/                # ← Historical snapshots (audit trail)
-│           ├── Member360_Project_Context_2026-03-25.md
-│           └── WORKING_BACKWARDS_2026-03-25.md
+│   └── product/                     # Product strategy & roadmap
+│       ├── PRODUCT_THINKING.md      # Full product context & patient journey
+│       └── ROADMAP.md               # Proposed enhancements & next steps
 │
 ├── prototypes/                      # UI/UX prototypes & demos
-│   ├── member360_prototype.jsx      # Full dashboard prototype
-│   ├── member360_chat.jsx           # Chat UI prototype
-│   ├── member360_architecture.jsx   # Architecture diagram prototype
-│   ├── member360_chat.html          # Standalone chat HTML demo
-│   └── demo/                        # Offline demo kit (no server needed)
-│       ├── index.html
-│       ├── start_demo.sh
-│       └── vendor/                  # Bundled React + Babel
+└── demo/                            # Offline demo kit (no server needed)
+    ├── index.html                   # Demo hub landing page
+    ├── chat.html                    # V1 chat demo
+    ├── chat_v2.html                 # V2 multi-claim chat demo
+    ├── start_demo.sh
+    └── vendor/                      # Bundled React + Babel (offline)
 │
 ├── archive/                         # Archived prior versions (never deleted)
 │   └── v1-streamlit/                # Original 850-line Streamlit monolith
@@ -226,12 +222,6 @@ member-360-scaled/
 ├── tests/
 │   └── test_agent.py
 │
-├── scripts/
-│   └── setup_repo.sh                # Repo bootstrap script
-│
-├── AUDIT_LOG.md                     # ← Append-only change log
-├── RESUME.md                        # Session quick-start for Code Puppy
-├── WORKING_BACKWARDS.md             # MVP scope & integration roadmap
 ├── README.md                        # This file
 └── LICENSE
 ```
@@ -317,7 +307,6 @@ The system renders:
 - **Frontend:** React SPA with 4 pages (Chat, Dashboard, Reconcile, Codes)
 - **Features:** 9 API endpoints, 7 chat flows, tool-chain visualization
 - **Status:** MVP-ready, synthetic data, integration-ready
-- **Docs:** SESSION_SUMMARY.md, WORKING_BACKWARDS.md
 
 ### v1 (Archived - Original Prototype)
 - **Backend:** Single 850-line `app.py` (Streamlit)
@@ -346,12 +335,12 @@ The system renders:
 
 ## Integration Roadmap
 
-See **WORKING_BACKWARDS.md** for the complete integration plan.
+See **[ROADMAP.md](docs/product/ROADMAP.md)** for proposed enhancements.
 
 **TL;DR:**
 1. **Phase 1 (Week 1):** Swap `synthetic_data.py` for real DB queries
 2. **Phase 2 (Week 2):** Hook up real SBC documents (SharePoint/S3)
-3. **Phase 3 (Week 3-4):** Enable LLM reasoning (Element Gateway)
+3. **Phase 3 (Week 3-4):** Enable LLM reasoning (OpenAI, Anthropic, or any LLM provider)
 4. **Phase 4 (Week 5-6):** Production hardening (auth, logging, CI/CD)
 
 ---
