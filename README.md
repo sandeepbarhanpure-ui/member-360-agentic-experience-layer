@@ -157,44 +157,83 @@ See `prototype-v1/README-original.md` for the original Streamlit quickstart.
 
 ## Project Structure
 
-### Scaled Production Version (v2)
-
 ```
-member-360/
-├── backend/
+member-360-scaled/
+│
+├── backend/                         # FastAPI server
 │   ├── app/
-│   │   ├── main.py                  # FastAPI entry point
-│   │   ├── routers/                 # API endpoints
+│   │   ├── main.py                  # Entry point
+│   │   ├── routers/                 # HTTP layer
 │   │   │   ├── members.py           # GET /api/members
 │   │   │   ├── claims.py            # GET /api/claims
 │   │   │   ├── reconcile.py         # POST /api/reconcile
 │   │   │   └── chat.py              # POST /api/chat
 │   │   ├── services/                # Business logic
-│   │   │   ├── eob_parser.py        # Parse raw EOB text
-│   │   │   ├── sbc_retriever.py     # Retrieve plan rules
-│   │   │   ├── reconciliation.py    # Core reasoning
-│   │   │   ├── denial_lookup.py     # Code mapping
+│   │   │   ├── eob_parser.py        # EOB text → structured record
+│   │   │   ├── sbc_retriever.py     # Plan rules lookup (RAG-ready)
+│   │   │   ├── reconciliation.py    # Core reasoning pipeline
+│   │   │   ├── denial_lookup.py     # CARC code mapping
 │   │   │   ├── chat_agent.py        # 7 conversation flows
-│   │   │   └── synthetic_data.py    # ← SWAP THIS for real data
+│   │   │   └── synthetic_data.py    # ← SWAP for real data
 │   │   └── models/
 │   │       └── schemas.py           # Pydantic models
-│   ├── data/                        # Synthetic fixtures
-│   │   ├── denial_mapping.json
-│   │   ├── mock_eob.txt
-│   │   └── synthetic_sbc.md
-│   └── requirements.txt
-├── frontend/
-│   ├── index.html                   # SPA entry point
+│   └── data/
+│       ├── denial_mapping.json      # Deterministic CARC → explanation
+│       ├── mock_eob.txt             # Sample EOB for testing
+│       └── synthetic_sbc.md         # Mock plan rules (SBC)
+│
+├── frontend/                        # React SPA (CDN-loaded, no build)
+│   ├── index.html                   # Entry point
 │   └── components/
+│       ├── app_shell.jsx            # 4-page shell
 │       ├── chat.jsx                 # Chat Agent UI
-│       └── app_shell.jsx            # Main app shell
-├── prototype-v1/                    # Original Streamlit prototype (archived)
-│   ├── app.py                       # 850-line monolith
-│   ├── prototypes/                  # React JSX prototypes
-│   └── README-original.md
-├── SESSION_SUMMARY.md               # Session context & architecture
+│       ├── chat_ui.jsx              # Chat sub-components
+│       ├── chat_cards.jsx           # Response cards
+│       ├── chat_tools.jsx           # Tool chain visualization
+│       └── member_panel.jsx         # Member context panel
+│
+├── docs/                            # All documentation
+│   ├── architecture/                # Visual diagrams & images
+│   │   ├── member360_architecture_diagram.svg
+│   │   ├── member360_solution_architecture.png
+│   │   ├── journey_map_overview.png
+│   │   └── phase4_friction_deep_dive.png
+│   ├── product/                     # Product strategy & roadmap
+│   │   ├── PRODUCT_THINKING.md      # Full product context & patient journey
+│   │   └── github_issues.md         # Open issues & proposed features
+│   └── context/                     # Project & LLM context docs
+│       ├── member360_llm_context.md # Full context for LLM sessions
+│       ├── Member360_Project_Context_2026-03-26.md  # Latest project context
+│       └── versions/                # ← Historical snapshots (audit trail)
+│           ├── Member360_Project_Context_2026-03-25.md
+│           └── WORKING_BACKWARDS_2026-03-25.md
+│
+├── prototypes/                      # UI/UX prototypes & demos
+│   ├── member360_prototype.jsx      # Full dashboard prototype
+│   ├── member360_chat.jsx           # Chat UI prototype
+│   ├── member360_architecture.jsx   # Architecture diagram prototype
+│   ├── member360_chat.html          # Standalone chat HTML demo
+│   └── demo/                        # Offline demo kit (no server needed)
+│       ├── index.html
+│       ├── start_demo.sh
+│       └── vendor/                  # Bundled React + Babel
+│
+├── archive/                         # Archived prior versions (never deleted)
+│   └── v1-streamlit/                # Original 850-line Streamlit monolith
+│       ├── app.py
+│       └── README-original.md
+│
+├── tests/
+│   └── test_agent.py
+│
+├── scripts/
+│   └── setup_repo.sh                # Repo bootstrap script
+│
+├── AUDIT_LOG.md                     # ← Append-only change log
+├── RESUME.md                        # Session quick-start for Code Puppy
 ├── WORKING_BACKWARDS.md             # MVP scope & integration roadmap
-└── README.md                        # This file
+├── README.md                        # This file
+└── LICENSE
 ```
 
 ---

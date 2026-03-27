@@ -23,6 +23,5 @@ node_modules/
 *.avi
 *.zip
 
-# Internal session artifacts
-RESUME.md
+# Internal session artifacts (backups dir only — RESUME.md is now tracked)
 .backups/
